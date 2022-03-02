@@ -6,8 +6,6 @@ LLVM Intrinsic rewrite for windows driver.
 
 ## TODO:
 ```batch
-1>lld-link : error : undefined symbol: __readcr3
-1>lld-link : error : undefined symbol: __writecr3
 1>lld-link : error : undefined symbol: _xbegin
 1>lld-link : error : undefined symbol: _xend
 1>lld-link : error : undefined symbol: __cpuidex
