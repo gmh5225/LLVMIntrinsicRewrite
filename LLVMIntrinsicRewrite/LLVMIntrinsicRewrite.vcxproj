@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="llvm_Intrinsic_readcr3.c" />
+    <ClCompile Include="llvm_Intrinsic_writecr2.c" />
     <ClCompile Include="llvm_Intrinsic_writecr3.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
