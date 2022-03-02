@@ -1,6 +1,9 @@
 # LLVMIntrinsicRewrite
 LLVM Intrinsic rewrite for windows driver.
 
+## DOC:
+- https://github.com/MicrosoftDocs/cpp-docs/tree/main/docs/intrinsics
+
 ## TODO:
 ```batch
 1>lld-link : error : undefined symbol: __readcr3
