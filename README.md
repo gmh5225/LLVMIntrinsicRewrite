@@ -13,7 +13,6 @@ LLVM Intrinsic rewrite for windows driver.
 1>lld-link : error : undefined symbol: KeQuerySystemTime
 1>lld-link : error : undefined symbol: __writedr
 1>lld-link : error : undefined symbol: __vmx_vmwrite
-1>lld-link : error : undefined symbol: __writemsr
 1>lld-link : error : undefined symbol: __vmx_vmread
 1>lld-link : error : undefined symbol: __rdtscp
 1>lld-link : error : undefined symbol: __invlpg
