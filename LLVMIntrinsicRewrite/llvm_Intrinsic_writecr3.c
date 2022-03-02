@@ -1,4 +1,5 @@
 
+// https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/writecr3.md
 #ifndef _WIN64
 __declspec(naked)
 #endif
@@ -9,8 +10,10 @@ __declspec(naked)
   }
 #else
   _asm {
-	    mov eax, dword ptr[esp + 4]
+	    push eax
+	    mov eax, dword ptr[esp + 4 + 4]
 		mov cr3, eax
+		pop eax
 		ret 0x8
   }
 #endif // _WIN64

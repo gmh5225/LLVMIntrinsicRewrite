@@ -1,13 +1,15 @@
-#include <stdio.h>
+
+
+// https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/readmsr.md
 #ifndef _WIN64
 __declspec(naked)
 #endif
     __int64 __readmsr(int reg) {
 #ifdef _WIN64
   _asm {
-	    xor rax,rax
+	    xor rax, rax
 		rdmsr
-		shl rdx,32
+		shl rdx, 32
 		or rax, rdx
   }
 #else
