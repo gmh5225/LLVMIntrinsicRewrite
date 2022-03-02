@@ -17,7 +17,6 @@ LLVM Intrinsic rewrite for windows driver.
 1>lld-link : error : undefined symbol: __invlpg
 1>lld-link : error : undefined symbol: __stosq
 1>lld-link : error : undefined symbol: __readpmc
-1>lld-link : error : undefined symbol: __readdr
 1>lld-link : error : undefined symbol: __inbytestring
 1>lld-link : error : undefined symbol: __inwordstring
 1>lld-link : error : undefined symbol: __indwordstring
