@@ -6,13 +6,12 @@ __declspec(naked)
 #ifdef _WIN64
   _asm {
 		mov cr3, rcx
-		ret
   }
 #else
   _asm {
 	    mov eax, dword ptr[esp + 4]
 		mov cr3, eax
-		ret
+		ret 0x8
   }
 #endif // _WIN64
 }

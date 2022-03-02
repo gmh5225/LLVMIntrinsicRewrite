@@ -6,8 +6,7 @@ __declspec(naked)
     unsigned __int64 __readcr3(void) {
 #ifdef _WIN64
   _asm {
-	    mov rax, cr3 
-	    ret
+	    mov rax, cr3
   }
 #else
   _asm {
