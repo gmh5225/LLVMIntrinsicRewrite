@@ -1,10 +1,13 @@
 
 
-__declspec(naked) unsigned __int64 __readcr3(void) {
+#ifndef _WIN64
+__declspec(naked)
+#endif
+    unsigned __int64 __readcr3(void) {
 #ifdef _WIN64
   _asm {
-		mov rax, cr3
-		ret
+	    mov rax, cr3 
+	    ret
   }
 #else
   _asm {
