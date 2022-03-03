@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="llvm_Intrinsic_cpuid.c" />
     <ClCompile Include="llvm_Intrinsic_readcr0.c" />
     <ClCompile Include="llvm_Intrinsic_readcr2.c" />
     <ClCompile Include="llvm_Intrinsic_readcr3.c" />
