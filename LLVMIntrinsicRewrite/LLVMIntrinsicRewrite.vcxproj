@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="llvm_Intrinsic_cpuid.c" />
+    <ClCompile Include="llvm_Intrinsic_invlpg.c" />
     <ClCompile Include="llvm_Intrinsic_KeQuerySystemTime.c" />
     <ClCompile Include="llvm_Intrinsic_rdtscp.c" />
     <ClCompile Include="llvm_Intrinsic_readcr0.c" />
