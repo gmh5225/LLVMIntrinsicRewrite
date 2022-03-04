@@ -21,7 +21,6 @@ LLVM Intrinsic rewrite for windows driver.
 1>lld-link : error : undefined symbol: __outdword
 1>lld-link : error : undefined symbol: __readcr8
 1>lld-link : error : undefined symbol: __writecr8
-1>lld-link : error : undefined symbol: __cpuid
 1>lld-link : error : undefined symbol: __readcr4
 1>lld-link : error : undefined symbol: __writecr4
 1>lld-link : error : undefined symbol: __vmx_vmlaunch
