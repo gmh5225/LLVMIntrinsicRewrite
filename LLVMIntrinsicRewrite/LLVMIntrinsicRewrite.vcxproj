@@ -31,6 +31,8 @@
     <ClCompile Include="llvm_Intrinsic_writecr3.c" />
     <ClCompile Include="llvm_Intrinsic_writedr.c" />
     <ClCompile Include="llvm_Intrinsic_writemsr.c" />
+    <ClCompile Include="llvm_Intrinsic_xbegin.c" />
+    <ClCompile Include="llvm_Intrinsic_xend.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
