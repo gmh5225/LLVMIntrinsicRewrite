@@ -21,6 +21,7 @@
     <ClCompile Include="llvm_Intrinsic_readcr0.c" />
     <ClCompile Include="llvm_Intrinsic_readcr2.c" />
     <ClCompile Include="llvm_Intrinsic_readcr3.c" />
+    <ClCompile Include="llvm_Intrinsic_readcr8.c" />
     <ClCompile Include="llvm_Intrinsic_readdr.c" />
     <ClCompile Include="llvm_Intrinsic_readmsr.c" />
     <ClCompile Include="llvm_Intrinsic_readpmc.c" />
