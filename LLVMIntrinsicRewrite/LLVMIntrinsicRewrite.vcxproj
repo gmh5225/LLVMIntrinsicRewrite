@@ -30,6 +30,7 @@
     <ClCompile Include="llvm_Intrinsic_writecr0.c" />
     <ClCompile Include="llvm_Intrinsic_writecr2.c" />
     <ClCompile Include="llvm_Intrinsic_writecr3.c" />
+    <ClCompile Include="llvm_Intrinsic_writecr8.c" />
     <ClCompile Include="llvm_Intrinsic_writedr.c" />
     <ClCompile Include="llvm_Intrinsic_writemsr.c" />
     <ClCompile Include="llvm_Intrinsic_xbegin.c" />
