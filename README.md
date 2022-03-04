@@ -12,8 +12,6 @@ LLVM Intrinsic rewrite for windows driver.
 1>lld-link : error : undefined symbol: _xend
 1>lld-link : error : undefined symbol: __vmx_vmwrite
 1>lld-link : error : undefined symbol: __vmx_vmread
-1>lld-link : error : undefined symbol: __inwordstring
-1>lld-link : error : undefined symbol: __indwordstring
 ```
 
 
