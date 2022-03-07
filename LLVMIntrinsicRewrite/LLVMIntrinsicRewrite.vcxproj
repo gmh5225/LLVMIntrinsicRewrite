@@ -21,6 +21,7 @@
     <ClCompile Include="llvm_Intrinsic_readcr0.c" />
     <ClCompile Include="llvm_Intrinsic_readcr2.c" />
     <ClCompile Include="llvm_Intrinsic_readcr3.c" />
+    <ClCompile Include="llvm_Intrinsic_readcr4.c" />
     <ClCompile Include="llvm_Intrinsic_readcr8.c" />
     <ClCompile Include="llvm_Intrinsic_readdr.c" />
     <ClCompile Include="llvm_Intrinsic_readmsr.c" />
@@ -30,6 +31,7 @@
     <ClCompile Include="llvm_Intrinsic_writecr0.c" />
     <ClCompile Include="llvm_Intrinsic_writecr2.c" />
     <ClCompile Include="llvm_Intrinsic_writecr3.c" />
+    <ClCompile Include="llvm_Intrinsic_writecr4.c" />
     <ClCompile Include="llvm_Intrinsic_writecr8.c" />
     <ClCompile Include="llvm_Intrinsic_writedr.c" />
     <ClCompile Include="llvm_Intrinsic_writemsr.c" />
