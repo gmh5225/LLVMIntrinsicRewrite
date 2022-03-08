@@ -1,12 +1,12 @@
 #include <Windows.h>
 
-// https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/inword.md
-unsigned short __inword(unsigned short Port) {
-  unsigned short ret = 0;
+// https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/indword.md
+unsigned long __inword(unsigned short Port) {
+  unsigned long ret = 0;
   _asm {
 	    mov dx, Port
-		in ax, dx
-		mov ret, ax
+		in eax, dx
+		mov ret, eax
   }
   return ret;
 }
