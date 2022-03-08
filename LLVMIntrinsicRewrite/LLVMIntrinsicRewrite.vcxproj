@@ -20,6 +20,9 @@
     <ClCompile Include="llvm_Intrinsic_inword.c" />
     <ClCompile Include="llvm_Intrinsic_inwordstring.c" />
     <ClCompile Include="llvm_Intrinsic_KeQuerySystemTime.c" />
+    <ClCompile Include="llvm_Intrinsic_outbyte.c" />
+    <ClCompile Include="llvm_Intrinsic_outdword.c" />
+    <ClCompile Include="llvm_Intrinsic_outword.c" />
     <ClCompile Include="llvm_Intrinsic_rdtscp.c" />
     <ClCompile Include="llvm_Intrinsic_readcr0.c" />
     <ClCompile Include="llvm_Intrinsic_readcr2.c" />
