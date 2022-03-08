@@ -13,9 +13,7 @@ LLVM Intrinsic rewrite for windows driver.
 1>lld-link : error : undefined symbol: __outbytestring
 1>lld-link : error : undefined symbol: __outwordstring
 1>lld-link : error : undefined symbol: __outdwordstring
-1>lld-link : error : undefined symbol: __outbyte
-1>lld-link : error : undefined symbol: __outword
-1>lld-link : error : undefined symbol: __outdword
+
 ```
 
 
