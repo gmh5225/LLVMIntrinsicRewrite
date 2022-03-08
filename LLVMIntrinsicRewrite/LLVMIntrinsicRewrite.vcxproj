@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="llvm_Intrinsic_cpuid.c" />
+    <ClCompile Include="llvm_Intrinsic_inbyte.c" />
     <ClCompile Include="llvm_Intrinsic_inbytestring.c" />
     <ClCompile Include="llvm_Intrinsic_indwordstring.c" />
     <ClCompile Include="llvm_Intrinsic_invlpg.c" />
