@@ -10,9 +10,7 @@ LLVM Intrinsic rewrite for windows driver.
 ## TODO:
 ```batch
 
-1>lld-link : error : undefined symbol: __outbytestring
-1>lld-link : error : undefined symbol: __outwordstring
-1>lld-link : error : undefined symbol: __outdwordstring
+
 
 ```
 
