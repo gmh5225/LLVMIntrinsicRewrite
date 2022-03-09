@@ -3,7 +3,8 @@
 #ifndef _WIN64
 __declspec(naked)
 #endif
-    void __writecr0(unsigned __int64 Data) {
+    void __writecr0(unsigned __int64 Data)
+{
 #ifdef _WIN64
   _asm {
 		mov cr0, rcx

@@ -4,7 +4,8 @@
 #ifndef _WIN64
 __declspec(naked)
 #endif
-    ULONG_PTR __readdr(unsigned int DebugRegister) {
+    ULONG_PTR __readdr(unsigned int DebugRegister)
+{
 #ifdef _WIN64
   _asm {
 		pushfq

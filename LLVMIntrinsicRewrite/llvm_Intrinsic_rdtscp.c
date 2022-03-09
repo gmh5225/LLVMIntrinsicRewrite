@@ -4,9 +4,10 @@
 #ifndef _WIN64
 __declspec(naked)
 #endif
-    unsigned __int64 __rdtscp(unsigned int *AUX) {
+    unsigned __int64 __rdtscp(unsigned int *AUX)
+{
 #ifdef _WIN64
-  _asm {
+    _asm {
 		xor rax, rax
 	    push rcx
 		push rsi
@@ -17,9 +18,9 @@ __declspec(naked)
 		mov dword ptr[rsi], ecx
 		pop rsi
 		pop rcx
-  }
+    }
 #else
-  _asm {
+    _asm {
 	    xor eax, eax
 	    xor edx, edx
 		rdtscp
@@ -28,6 +29,6 @@ __declspec(naked)
 		mov dword ptr[esi], ecx
 		pop esi
 	    ret 4
-  }
+    }
 #endif // _WIN64
 }

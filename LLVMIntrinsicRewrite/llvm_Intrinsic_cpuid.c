@@ -4,9 +4,10 @@
 #ifndef _WIN64
 __declspec(naked)
 #endif
-    void __cpuidex(int CPUInfo[4], int Function, int SubLeaf) {
+    void __cpuidex(int CPUInfo[4], int Function, int SubLeaf)
+{
 #ifdef _WIN64
-  _asm {
+    _asm {
 	    push rcx
 		push rsi
 	    mov eax, edx
@@ -19,9 +20,9 @@ __declspec(naked)
 		mov dword ptr[rsi + 0xc], edx
 		pop rsi
 		pop rcx
-  }
+    }
 #else
-  _asm {
+    _asm {
 	    push ebp
 		mov ebp, esp
 		push esi
@@ -36,7 +37,7 @@ __declspec(naked)
 		pop esi
 		pop ebp
 		ret 0xc
-  }
+    }
 #endif // _WIN64
 }
 
@@ -44,9 +45,10 @@ __declspec(naked)
 #ifndef _WIN64
 __declspec(naked)
 #endif
-    void __cpuid(int CPUInfo[4], int Function) {
+    void __cpuid(int CPUInfo[4], int Function)
+{
 #ifdef _WIN64
-  _asm {
+    _asm {
 		push rcx
 		push rsi
 		mov eax, edx
@@ -59,9 +61,9 @@ __declspec(naked)
 		mov dword ptr[rsi + 0xc], edx
 		pop rsi
 		pop rcx
-  }
+    }
 #else
-  _asm {
+    _asm {
 		push ebp
 		mov ebp, esp
 		push esi
@@ -76,6 +78,6 @@ __declspec(naked)
 		pop esi
 		pop ebp
 		ret 0xc
-  }
+    }
 #endif // _WIN64
 }

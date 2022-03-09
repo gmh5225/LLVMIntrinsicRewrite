@@ -4,7 +4,8 @@
 #ifndef _WIN64
 __declspec(naked)
 #endif
-    ULONG_PTR __readcr0(void) {
+    ULONG_PTR __readcr0(void)
+{
 #ifdef _WIN64
   _asm {
 	    mov rax, cr0

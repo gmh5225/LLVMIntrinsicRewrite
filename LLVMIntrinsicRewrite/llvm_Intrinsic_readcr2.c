@@ -4,7 +4,8 @@
 #ifndef _WIN64
 __declspec(naked)
 #endif
-    unsigned __int64 __readcr2(void) {
+    unsigned __int64 __readcr2(void)
+{
 #ifdef _WIN64
   _asm {
 	    mov rax, cr2

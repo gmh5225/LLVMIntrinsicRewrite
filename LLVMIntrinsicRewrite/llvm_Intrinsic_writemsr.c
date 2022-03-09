@@ -4,7 +4,8 @@
 #ifndef _WIN64
 __declspec(naked)
 #endif
-    void __writemsr(unsigned long Register, unsigned __int64 Value) {
+    void __writemsr(unsigned long Register, unsigned __int64 Value)
+{
 #ifdef _WIN64
   _asm {
 		mov eax, edx
