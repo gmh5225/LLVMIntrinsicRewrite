@@ -10,7 +10,7 @@ LLVM Intrinsic rewrite for windows driver.
 ## TODO:
 ```batch
 
-
+lld-link : error : undefined symbol: __vmx_on
 
 ```
 
