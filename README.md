@@ -1,5 +1,5 @@
 # LLVMIntrinsicRewrite
-LLVM Intrinsic rewrite for windows driver.
+LLVM Intrinsic rewrite for windows driver. This project was aimed to used for llvm-msvc [[link]](https://github.com/NewWorldComingSoon/llvm-msvc-build)
 
 ## Documents:
 - https://github.com/MicrosoftDocs/cpp-docs/tree/main/docs/intrinsics
