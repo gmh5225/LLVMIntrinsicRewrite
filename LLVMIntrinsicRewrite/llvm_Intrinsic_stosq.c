@@ -10,7 +10,7 @@ __stosq(unsigned __int64 *Destination, unsigned __int64 Data, size_t Count)
         unsigned __int64 *p = (unsigned __int64 *)(Destination + i);
         _asm {
             mov rdi, p
-            mov rax,rdx
+            mov rax, Data
             stosq
         }
     }
