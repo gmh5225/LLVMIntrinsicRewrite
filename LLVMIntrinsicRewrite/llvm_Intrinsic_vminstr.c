@@ -27,36 +27,20 @@ unsigned char
 __vmx_vmread(size_t Field, size_t *FieldValue)
 {
     _asm {
-	  push rsi
-	  vmread rsi, rcx
+	  vmread rdx, rcx
 
 	  jc _vmread_err1
 	  jz _vmread_err2
-	  mov qword ptr[rdx], rsi
-	  pop rsi
-
-	  pop rsi; add by ourself
-	  pop rbp
 
 	  xor rax, rax
 	  ret
 
 	_vmread_err1:
 	  mov eax, 1
-	  pop rsi
-
-	  pop rsi; add by ourself
-	  pop rbp
-
 	  ret
 
     _vmread_err2:
 	  mov eax, 2
-	  pop rsi
-
-	  pop rsi; add by ourself
-	  pop rbp
-
 	  ret
     }
 }
