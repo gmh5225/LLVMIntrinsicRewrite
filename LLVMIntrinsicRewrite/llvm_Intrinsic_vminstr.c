@@ -1,5 +1,8 @@
 #include <Windows.h>
 
+////////////////////////////////////////////////////////////////////////////////////////
+//// this file only for testing
+
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-vmwrite.md
 #ifdef _WIN64
 unsigned char
@@ -44,7 +47,6 @@ __vmx_vmread(size_t Field, size_t *FieldValue)
 	  pushfq
 	  mov qword ptr[rdx], 0
 	  vmread [rdx], rcx
-
 	  jc _vmread_err1
 	  jz _vmread_err2
 
@@ -80,12 +82,24 @@ unsigned char
 __vmx_vmlaunch(void)
 {
     _asm {
-
-	  add rsp, 0x18
+	  mov rsp, rbp
+	  pop rbx
+	  pop rbp
 	  vmlaunch
-	  sub rsp, 0x18
+	  jc _vmlaunch_err ;if vmlaunch succeed will never be here
+	  jz _vmlaunch_err_half
+
+	  xor al, al
+	  ret
+
+	_vmlaunch_err:
+	  mov al, 1
+	  ret
+
+    _vmlaunch_err_half:
+	  mov al, 2
+      ret
     }
-    return 1;
 }
 #endif
 
@@ -215,11 +229,24 @@ unsigned char
 __vmx_vmresume(void)
 {
     _asm {
-		add rsp, 0x18
+		mov rsp, rbp
+		pop rbx
+		pop rbp
 		vmresume
-		sub rsp, 0x18
+		jc _vmresume_err ;if vmresume succeed will never be here
+	    jz _vmresume_err_half
+
+	    xor al, al
+	    ret
+
+	  _vmresume_err:
+	    mov al, 1
+	    ret
+
+     _vmresume_err_half:
+	    mov al, 2
+        ret
     }
-    return 1;
 }
 #endif
 
