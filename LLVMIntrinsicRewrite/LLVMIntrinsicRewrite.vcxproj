@@ -39,6 +39,10 @@
     <ClCompile Include="llvm_Intrinsic_stosq.c" />
     <ClCompile Include="llvm_Intrinsic_stosw.c" />
     <ClCompile Include="llvm_Intrinsic_vminstr.c" />
+    <ClCompile Include="llvm_Intrinsic_vminstr_test.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="llvm_Intrinsic_writecr0.c" />
     <ClCompile Include="llvm_Intrinsic_writecr2.c" />
     <ClCompile Include="llvm_Intrinsic_writecr3.c" />

@@ -1,9 +1,12 @@
 #include <Windows.h>
 
+////////////////////////////////////////////////////////////////////////////////////////
+//// this file only for testing
+
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-vmwrite.md
 #ifdef _WIN64
 unsigned char
-__vmx_vmwrite(size_t Field, size_t FieldValue)
+test__vmx_vmwrite(size_t Field, size_t FieldValue)
 {
     _asm {
 		pushfq
@@ -38,13 +41,12 @@ __vmx_vmwrite(size_t Field, size_t FieldValue)
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-vmread.md
 #ifdef _WIN64
 unsigned char
-__vmx_vmread(size_t Field, size_t *FieldValue)
+test__vmx_vmread(size_t Field, size_t *FieldValue)
 {
     _asm {
 	  pushfq
 	  mov qword ptr[rdx], 0
 	  vmread [rdx], rcx
-
 	  jc _vmread_err1
 	  jz _vmread_err2
 
@@ -77,7 +79,7 @@ __vmx_vmread(size_t Field, size_t *FieldValue)
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-vmlaunch.md
 #ifdef _WIN64
 unsigned char
-__vmx_vmlaunch(void)
+test__vmx_vmlaunch(void)
 {
     _asm {
 
@@ -92,7 +94,7 @@ __vmx_vmlaunch(void)
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-off.md
 #ifdef _WIN64
 void
-__vmx_off()
+test__vmx_off()
 {
     _asm {
 	  vmxoff
@@ -103,7 +105,7 @@ __vmx_off()
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-vmclear.md
 #ifdef _WIN64
 unsigned char
-__vmx_vmclear(unsigned __int64 *VmcsPhysicalAddress)
+test__vmx_vmclear(unsigned __int64 *VmcsPhysicalAddress)
 {
     _asm {
 	  push rdi
@@ -150,7 +152,7 @@ __vmx_vmclear(unsigned __int64 *VmcsPhysicalAddress)
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-vmptrld.md
 #ifdef _WIN64
 int
-__vmx_vmptrld(unsigned __int64 *VmcsPhysicalAddress)
+test__vmx_vmptrld(unsigned __int64 *VmcsPhysicalAddress)
 {
     _asm {
 	  push rdi
@@ -196,7 +198,7 @@ __vmx_vmptrld(unsigned __int64 *VmcsPhysicalAddress)
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-vmptrst.md
 #ifdef _WIN64
 void
-__vmx_vmptrst(unsigned __int64 *VmcsPhysicalAddress)
+test__vmx_vmptrst(unsigned __int64 *VmcsPhysicalAddress)
 {
     _asm {
 	    push rdi
@@ -212,7 +214,7 @@ __vmx_vmptrst(unsigned __int64 *VmcsPhysicalAddress)
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-vmresume.md
 #ifdef _WIN64
 unsigned char
-__vmx_vmresume(void)
+test__vmx_vmresume(void)
 {
     _asm {
 		add rsp, 0x18
@@ -226,7 +228,7 @@ __vmx_vmresume(void)
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/vmx-on.md
 #ifdef _WIN64
 unsigned char
-__vmx_on(unsigned __int64 *VmsSupportPhysicalAddress)
+test__vmx_on(unsigned __int64 *VmsSupportPhysicalAddress)
 {
     _asm {
 	  push rdi
