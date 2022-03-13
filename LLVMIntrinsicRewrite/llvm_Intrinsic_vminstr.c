@@ -161,8 +161,8 @@ __vmx_vmptrld(unsigned __int64 *VmcsPhysicalAddress)
 	  jc _vmptrld_err
 	  jz _vmptrld_err2
 
-	  mov     rsp, rbp
 	  popfq
+	  mov     rsp, rbp
 	  pop rbx
 	  pop rdi
 	  pop rbp
