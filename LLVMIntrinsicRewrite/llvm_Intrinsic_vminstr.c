@@ -6,15 +6,29 @@ unsigned char
 __vmx_vmwrite(size_t Field, size_t FieldValue)
 {
     _asm {
+		pushfq
 		vmwrite rcx, rdx
 		jc _vmwrite_err1
 		jz _vmwrite_err2
+
+		popfq
+		mov rsp, rbp
+		pop rbx
+		pop rbp
 		xor eax, eax
 		ret
-	_vmwrite_err1:
+	  _vmwrite_err1:
+		popfq
+		mov rsp, rbp
+		pop rbx
+		pop rbp
 		mov eax, 1
 		ret
-	_vmwrite_err2:
+	  _vmwrite_err2:
+		popfq
+		mov rsp, rbp
+		pop rbx
+		pop rbp
 		mov eax, 2
 		ret
     }
@@ -27,19 +41,32 @@ unsigned char
 __vmx_vmread(size_t Field, size_t *FieldValue)
 {
     _asm {
+	  pushfq
 	  vmread rdx, rcx
 
 	  jc _vmread_err1
 	  jz _vmread_err2
 
+	  popfq
+	  mov rsp, rbp
+      pop rbx
+	  pop rbp
 	  xor rax, rax
 	  ret
 
 	_vmread_err1:
+	  popfq
+	  mov rsp, rbp
+      pop rbx
+	  pop rbp
 	  mov eax, 1
 	  ret
 
     _vmread_err2:
+	  popfq
+	  mov rsp, rbp
+      pop rbx
+	  pop rbp
 	  mov eax, 2
 	  ret
     }
@@ -52,25 +79,12 @@ unsigned char
 __vmx_vmlaunch(void)
 {
     _asm {
-	  pop rbp; add by ourself
-	  add rsp, 8 ;if Vmlaunch succeed we add rsp by ourself
-	  vmlaunch 
-	  jc _vmlaunch_err ;if Vmlaunch succeed will never be here
-	  jz _vmlaunch_err_half
-	  xor eax, eax
-	  sub rsp, 8
-	  ret
-	  
-	_vmlaunch_err:
-	  mov eax, 1
-	  sub rsp, 8
-	  ret
 
-    _vmlaunch_err_half:
-      mov eax, 2
-	  sub rsp, 8
-      ret
+	  add rsp, 0x18
+	  vmlaunch
+	  sub rsp, 0x18
     }
+    return 1;
 }
 #endif
 
@@ -80,11 +94,7 @@ void
 __vmx_off()
 {
     _asm {
-	  pop rbp; add by ourself
-	  add rsp, 8
 	  vmxoff
-	  sub rsp, 8
-	  ret
     }
 }
 #endif
@@ -97,13 +107,16 @@ __vmx_vmclear(unsigned __int64 *VmcsPhysicalAddress)
     _asm {
 	  push rdi
 	  mov rdi, VmcsPhysicalAddress
+	  pushfq
 	  vmclear [rdi]
 	  pop rdi
 
 	  jc _vmclear_err
 	  jz _vmclear_err2
 	  
-	  pop rax
+	  popfq
+	  mov     rsp, rbp
+	  pop rbx
 	  pop rdi
 	  pop rbp
 
@@ -111,16 +124,19 @@ __vmx_vmclear(unsigned __int64 *VmcsPhysicalAddress)
 	  ret
 
 	_vmclear_err:
-
-	  pop rax
+	  popfq
+	  mov     rsp, rbp
+	  pop rbx
 	  pop rdi
 	  pop rbp
 
 	  mov rax, 1
 	  ret
 
-   _vmclear_err2:
-	  pop rax
+    _vmclear_err2:
+	  popfq
+	  mov     rsp, rbp
+	  pop rbx
 	  pop rdi
 	  pop rbp
 
@@ -138,12 +154,15 @@ __vmx_vmptrld(unsigned __int64 *VmcsPhysicalAddress)
     _asm {
 	  push rdi
 	  mov rdi, VmcsPhysicalAddress
+	  pushfq
 	  vmptrld [rdi]
 	  pop rdi
 	  jc _vmptrld_err
 	  jz _vmptrld_err2
 
-	  pop rax
+	  mov     rsp, rbp
+	  popfq
+	  pop rbx
 	  pop rdi
 	  pop rbp
 
@@ -151,7 +170,9 @@ __vmx_vmptrld(unsigned __int64 *VmcsPhysicalAddress)
 	  ret
 
 	_vmptrld_err:
-	  pop rax
+	  popfq
+	  mov     rsp, rbp
+	  pop rbx
 	  pop rdi
 	  pop rbp
 
@@ -159,7 +180,9 @@ __vmx_vmptrld(unsigned __int64 *VmcsPhysicalAddress)
 	  ret
 
     _vmptrld_err2:
-	  pop rax
+	  popfq
+	  mov     rsp, rbp
+	  pop rbx
 	  pop rdi
 	  pop rbp
 
@@ -177,7 +200,9 @@ __vmx_vmptrst(unsigned __int64 *VmcsPhysicalAddress)
     _asm {
 	    push rdi
 		mov rdi, VmcsPhysicalAddress
+		pushfq
 		vmptrst [rdi]
+		popfq
 		pop rdi
     }
 }
@@ -189,12 +214,11 @@ unsigned char
 __vmx_vmresume(void)
 {
     _asm {
-	    pop rbp; add by ourself
-		add rsp, 8
+		add rsp, 0x18
 		vmresume
-		sub rsp, 8
-		ret
+		sub rsp, 0x18
     }
+    return 1;
 }
 #endif
 
@@ -206,12 +230,15 @@ __vmx_on(unsigned __int64 *VmsSupportPhysicalAddress)
     _asm {
 	  push rdi
 	  mov rdi, VmsSupportPhysicalAddress
+	  pushfq
 	  vmxon [rdi]
 	  pop rdi
 
 	  jc _vmxon_err
 	  
-	  pop rax
+	  popfq
+	  mov rsp, rbp
+	  pop rbx
 	  pop rdi
 	  pop rbp
 
@@ -219,8 +246,9 @@ __vmx_on(unsigned __int64 *VmsSupportPhysicalAddress)
 	  ret
 
 	_vmxon_err:
-
-	  pop rax
+	  popfq
+	  mov rsp, rbp
+	  pop rbx
 	  pop rdi
 	  pop rbp
 
