@@ -8,9 +8,11 @@ __declspec(naked)
 {
 #ifdef _WIN64
   _asm {
+	    push rax
 		mov eax, edx
 		shr rdx, 32
 		wrmsr
+		pop rax
   }
 #else
   _asm {
