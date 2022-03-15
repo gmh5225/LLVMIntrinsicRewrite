@@ -5,14 +5,17 @@
 void
 __stosq(unsigned __int64 *Destination, unsigned __int64 Data, size_t Count)
 {
-    for (size_t i = 0; i < Count; ++i)
-    {
-        unsigned __int64 *p = (unsigned __int64 *)(Destination + i);
-        _asm {
-            mov rdi, p
+    _asm {
+            push rax
+            push rcx
+            push rdi
             mov rax, Data
-            stosq
-        }
+            mov rcx, Count
+            mov rdi, Destination
+            rep stosq
+            pop rdi
+            pop rcx
+            pop rax
     }
 }
 #endif

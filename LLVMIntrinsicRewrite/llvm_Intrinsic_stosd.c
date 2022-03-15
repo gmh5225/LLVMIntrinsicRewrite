@@ -4,17 +4,31 @@
 void
 __stosd(unsigned long *Destination, unsigned long Data, size_t Count)
 {
-    for (size_t i = 0; i < Count; ++i)
-    {
-        unsigned long *p = (unsigned long *)(Destination + i);
-        _asm {
 #ifdef _WIN64
-            mov rdi, p
-#else
-            mov edi, p
-#endif
-            mov eax, Data
-            stosd
-        }
+    _asm {
+            push rax
+            push rcx
+            push rdi
+            mov rax, Data
+            mov rcx, Count
+            mov rdi, Destination
+            rep stosd
+            pop rdi
+            pop rcx
+            pop rax
     }
+#else
+    _asm {
+            push eax
+            push ecx
+            push edi
+            mov eax, Data
+            mov ecx, Count
+            mov edi, Destination
+            rep stosd
+            pop edi
+            pop ecx
+            pop eax
+    }
+#endif
 }
