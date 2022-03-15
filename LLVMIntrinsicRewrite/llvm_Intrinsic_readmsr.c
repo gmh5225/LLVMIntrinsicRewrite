@@ -8,10 +8,12 @@ __declspec(naked)
 {
 #ifdef _WIN64
     _asm {
+		push rdx
 	    xor rax, rax
 		rdmsr
 		shl rdx, 32
 		or rax, rdx
+		pop rdx
     }
 #else
     _asm {

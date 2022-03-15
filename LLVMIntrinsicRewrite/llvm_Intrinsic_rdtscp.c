@@ -10,6 +10,7 @@ __declspec(naked)
     _asm {
 		xor rax, rax
 	    push rcx
+		push rdx
 		push rsi
 		rdtscp
 		shl rdx, 32
@@ -17,6 +18,7 @@ __declspec(naked)
 		mov rsi, qword ptr[rsp + 8]
 		mov dword ptr[rsi], ecx
 		pop rsi
+		pop rdx
 		pop rcx
     }
 #else
