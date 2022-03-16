@@ -15,7 +15,7 @@ __declspec(naked)
 		rdtscp
 		shl rdx, 32
 		or rax, rdx
-		mov rsi, qword ptr[rsp + 8]
+		mov rsi, qword ptr[rsp + 0x10]
 		mov dword ptr[rsi], ecx
 		pop rsi
 		pop rdx
