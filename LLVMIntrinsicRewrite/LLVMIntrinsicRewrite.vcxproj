@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="llvm_Intrinsic_cpuid.c" />
     <ClCompile Include="llvm_Intrinsic_inbyte.c" />
     <ClCompile Include="llvm_Intrinsic_inbytestring.c" />
     <ClCompile Include="llvm_Intrinsic_indword.c" />
@@ -64,14 +63,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>AceSC-LLVM_v142</PlatformToolset>
+    <PlatformToolset>LLVM-MSVC_v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>AceSC-LLVM_v142</PlatformToolset>
+    <PlatformToolset>LLVM-MSVC_v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
