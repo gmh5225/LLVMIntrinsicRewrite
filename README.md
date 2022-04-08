@@ -9,8 +9,6 @@ LLVM Intrinsic rewrite for windows driver. This project was aimed to be used for
 
 ## TODO:
 ```batch
-lld-link : error : undefined symbol: _disable
-lld-link : error : undefined symbol: _enable
 lld-link : error : undefined symbol: _tls_index
 lld-link : error : undefined symbol: _Init_thread_epoch
 lld-link : error : undefined symbol: _Init_thread_header
