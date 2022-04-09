@@ -52,6 +52,7 @@
     <ClCompile Include="llvm_Intrinsic_writemsr.c" />
     <ClCompile Include="llvm_Intrinsic_xbegin.c" />
     <ClCompile Include="llvm_Intrinsic_xend.c" />
+    <ClCompile Include="llvm_threadsafe_statics.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
