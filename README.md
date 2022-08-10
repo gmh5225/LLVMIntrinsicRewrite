@@ -9,7 +9,7 @@ LLVM Intrinsic rewrite for windows driver. This project was aimed to be used for
 
 ## TODO:
 ```batch
-
+_invpcid
 ```
 
 
