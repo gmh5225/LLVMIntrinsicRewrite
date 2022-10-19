@@ -3,6 +3,7 @@ LLVM Intrinsic rewrite for windows driver. This project was aimed to be used for
 
 ## Documents:
 - https://github.com/MicrosoftDocs/cpp-docs/tree/main/docs/intrinsics
+- https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html
 - https://namazso.github.io/x86/
 - https://hjlebbink.github.io/x86doc/
 - https://www.felixcloutier.com/x86/
