@@ -13,7 +13,7 @@ __declspec(naked)
 #else
     _asm {
 	    push eax
-		mov eax, dword ptr[esp + 4]
+		mov eax, dword ptr[esp + 8]
 	    invlpg [eax]
 		pop eax
 	    ret 4
