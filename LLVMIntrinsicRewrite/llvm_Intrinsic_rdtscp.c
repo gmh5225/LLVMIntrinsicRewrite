@@ -1,10 +1,7 @@
 #include <Windows.h>
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/rdtscp.md
-#ifndef _WIN64
-__declspec(naked)
-#endif
-    unsigned __int64 __rdtscp(unsigned int *AUX)
+__declspec(naked) unsigned __int64 __rdtscp(unsigned int *AUX)
 {
 #ifdef _WIN64
     _asm {
@@ -20,6 +17,7 @@ __declspec(naked)
 		pop rsi
 		pop rdx
 		pop rcx
+		ret
     }
 #else
     _asm {
