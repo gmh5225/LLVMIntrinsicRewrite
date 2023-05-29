@@ -1,14 +1,12 @@
 #include <Windows.h>
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/invlpg.md
-#ifndef _WIN64
-__declspec(naked)
-#endif
-    void __invlpg(void *Address)
+__declspec(naked) void __invlpg(void *Address)
 {
 #ifdef _WIN64
     _asm {
 		invlpg [rcx]
+		ret
     }
 #else
     _asm {
