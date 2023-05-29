@@ -1,17 +1,19 @@
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/disable.md
-void
-_disable(void)
+__declspec(naked) void _disable(void)
 {
-    _asm {
+    _asm
+    {
 	    cli
+        ret
     }
 }
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/enable.md
-void
-_enable(void)
+__declspec(naked) void _enable(void)
 {
-    _asm {
+    _asm
+    {
 	    sti
+        ret
     }
 }
