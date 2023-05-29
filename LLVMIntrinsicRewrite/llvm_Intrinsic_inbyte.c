@@ -4,11 +4,7 @@
 unsigned char
 __inbyte(unsigned short Port)
 {
-    unsigned char ret = 0;
-    _asm {
-	    mov dx, Port
-		in al, dx
-		mov ret, al
-    }
-    return ret;
+    unsigned char byte;
+    __asm__ __volatile__("inb %w[Port], %b[byte]" : [byte] "=a"(byte) : [Port] "Nd"(Port));
+    return byte;
 }

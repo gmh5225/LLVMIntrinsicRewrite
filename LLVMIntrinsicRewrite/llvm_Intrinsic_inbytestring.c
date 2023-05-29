@@ -4,18 +4,8 @@
 void
 __inbytestring(unsigned short Port, unsigned char *Buffer, unsigned long Count)
 {
-    for (unsigned long i = 0; i < Count; ++i)
-    {
-        unsigned char *pOut = (unsigned char *)(Buffer + i);
-        _asm {
-        mov dx, Port
-#ifdef _WIN64
-        mov rdi, pOut
-#else
-        mov edi, pOut
-#endif
-        insb
-
-        }
-    }
+    __asm__ __volatile__("rep; insb"
+                         : [Buffer] "=D"(Buffer), [Count] "=c"(Count)
+                         : "d"(Port), "[Buffer]"(Buffer), "[Count]"(Count)
+                         : "memory");
 }

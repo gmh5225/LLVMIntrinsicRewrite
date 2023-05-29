@@ -4,11 +4,7 @@
 unsigned long
 __indword(unsigned short Port)
 {
-    unsigned long ret = 0;
-    _asm {
-	    mov dx, Port
-		in eax, dx
-		mov ret, eax
-    }
-    return ret;
+    unsigned long dword;
+    __asm__ __volatile__("inl %w[Port], %k[dword]" : [dword] "=a"(dword) : [Port] "Nd"(Port));
+    return dword;
 }
