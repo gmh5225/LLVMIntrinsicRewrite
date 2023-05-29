@@ -1,10 +1,7 @@
 #include <Windows.h>
 
 // https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#text=_invpcid&ig_expand=4132
-#ifndef _WIN64
-__declspec(naked)
-#endif
-    void _invpcid(unsigned int type, void *descriptor)
+__declspec(naked) void _invpcid(unsigned int type, void *descriptor)
 {
 #ifdef _WIN64
     _asm {
@@ -13,6 +10,7 @@ __declspec(naked)
 		mov eax, ecx
 		invpcid rax, [rdx]
 		pop rax
+		ret
     }
 #else
     _asm {
