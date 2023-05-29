@@ -13,8 +13,7 @@ LLVM Intrinsic rewrite for windows driver. This project was aimed to be used for
 
 ## TODO:
 ```batch
-void __lidt(void * Source);
-void __sidt(void * Destination);
+
 ```
 
 
