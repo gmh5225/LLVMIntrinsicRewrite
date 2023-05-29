@@ -1,21 +1,19 @@
 
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/writemsr.md
-#ifndef _WIN64
-__declspec(naked)
-#endif
-    void __writemsr(unsigned long Register, unsigned __int64 Value)
+__declspec(naked) void __writemsr(unsigned long Register, unsigned __int64 Value)
 {
 #ifdef _WIN64
-  _asm {
+    _asm {
 	    push rax
 		mov eax, edx
 		shr rdx, 32
 		wrmsr
 		pop rax
-  }
+		ret
+    }
 #else
-  _asm {
+    _asm {
 	    push ecx
 		push edx
 		push eax
@@ -30,6 +28,6 @@ __declspec(naked)
 		pop ecx
 
 		ret 0xc
-  }
+    }
 #endif // _WIN64
 }
