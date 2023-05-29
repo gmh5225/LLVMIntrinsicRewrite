@@ -1,10 +1,7 @@
 #include <Windows.h>
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/readpmc.md
-#ifndef _WIN64
-__declspec(naked)
-#endif
-    unsigned __int64 __readpmc(unsigned long counter)
+__declspec(naked) unsigned __int64 __readpmc(unsigned long counter)
 {
 #ifdef _WIN64
     _asm {
@@ -14,6 +11,7 @@ __declspec(naked)
 		shl rdx, 32
 		or rax, rdx
 		pop rdx
+		ret
     }
 #else
     _asm {
