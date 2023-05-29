@@ -4,11 +4,7 @@
 unsigned long
 __segmentlimit(unsigned long a)
 {
-    unsigned long ret = 0;
-    _asm {
-        lsl eax, [a]
-        mov ret, eax
-    }
-
-    return ret;
+    unsigned long retval;
+    __asm__ __volatile__("lsl %[a], %[retval]" : [retval] "=r"(retval) : [a] "rm"(a));
+    return retval;
 }
