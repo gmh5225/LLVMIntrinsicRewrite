@@ -37,6 +37,7 @@
     <ClCompile Include="llvm_Intrinsic_readmsr.c" />
     <ClCompile Include="llvm_Intrinsic_readpmc.c" />
     <ClCompile Include="llvm_Intrinsic_segment.c" />
+    <ClCompile Include="llvm_Intrinsic_sgdt.c" />
     <ClCompile Include="llvm_Intrinsic_sidtlidt.c" />
     <ClCompile Include="llvm_Intrinsic_sticli.c" />
     <ClCompile Include="llvm_Intrinsic_stosb.c" />
