@@ -1,13 +1,10 @@
 #include <Windows.h>
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/writedr.md
-#ifndef _WIN64
-__declspec(naked)
-#endif
-    void __writedr(unsigned int DebugRegister, ULONG_PTR DebugValue)
+__declspec(naked) void __writedr(unsigned int DebugRegister, ULONG_PTR DebugValue)
 {
 #ifdef _WIN64
-  _asm {
+    _asm {
 		pushfq
 		cmp ecx, 0
 		je _dr0
@@ -41,9 +38,10 @@ __declspec(naked)
 		mov dr7, rdx
 	_end:
 		popfq
-  }
+		ret
+    }
 #else
-  _asm {
+    _asm {
 	    pushfd
 		push eax
 		cmp dword ptr[esp + 4 + 8], 0
@@ -87,6 +85,6 @@ __declspec(naked)
 		pop eax
 		popfd
 		ret 0x8
-  }
+    }
 #endif // _WIN64
 }
