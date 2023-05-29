@@ -8,3 +8,8 @@ __inbyte(unsigned short Port)
     __asm__ __volatile__("inb %w[Port], %b[byte]" : [byte] "=a"(byte) : [Port] "Nd"(Port));
     return byte;
 }
+
+int __cdecl _inp(unsigned short Port)
+{
+    return __inbyte(Port);
+}

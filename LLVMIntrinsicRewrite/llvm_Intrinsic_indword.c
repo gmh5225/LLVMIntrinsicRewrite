@@ -8,3 +8,8 @@ __indword(unsigned short Port)
     __asm__ __volatile__("inl %w[Port], %k[dword]" : [dword] "=a"(dword) : [Port] "Nd"(Port));
     return dword;
 }
+
+unsigned long __cdecl _inpd(unsigned short Port)
+{
+    return __indword(Port);
+}

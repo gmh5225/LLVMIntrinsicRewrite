@@ -6,3 +6,9 @@ __outdword(unsigned short Port, unsigned long Data)
 {
     __asm__ __volatile__("outl %k[Data], %w[Port]" : : [Port] "Nd"(Port), [Data] "a"(Data));
 }
+
+unsigned long __cdecl _outpd(unsigned short Port, unsigned long dataword)
+{
+    __outdword(Port, dataword);
+    return dataword;
+}
