@@ -1,13 +1,10 @@
 #include <Windows.h>
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/readdr.md
-#ifndef _WIN64
-__declspec(naked)
-#endif
-    ULONG_PTR __readdr(unsigned int DebugRegister)
+__declspec(naked) ULONG_PTR __readdr(unsigned int DebugRegister)
 {
 #ifdef _WIN64
-  _asm {
+    _asm {
 		pushfq
 		cmp ecx, 0
 		je _dr0
@@ -41,9 +38,10 @@ __declspec(naked)
 		mov rax, dr7
 	_end:
 		popfq
-  }
+		ret
+    }
 #else
-  _asm {
+    _asm {
 	    pushfd
 		cmp dword ptr[esp + 8], 0
 		je _dr0
@@ -79,6 +77,6 @@ __declspec(naked)
 	_end:
 		popfd
 		ret 0x4
-  }
+    }
 #endif // _WIN64
 }
