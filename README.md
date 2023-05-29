@@ -9,6 +9,7 @@ LLVM Intrinsic rewrite for windows driver. This project was aimed to be used for
 - https://www.felixcloutier.com/x86/
 - https://docs.oracle.com/cd/E36784_01/html/E36859/gntbx.html
 - https://www.intel.com/content/www/us/en/develop/documentation/cpp-compiler-developer-guide-and-reference/top/compiler-reference/intrinsics
+- https://github.com/HBelusca/reactos/blob/30bc0b6b7a468150e701d13bb30655b6749eadf1/sdk/include/crt/mingw32/intrin_x86.h
 
 ## TODO:
 ```batch
