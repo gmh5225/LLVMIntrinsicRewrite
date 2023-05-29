@@ -4,18 +4,5 @@
 void
 __outbytestring(unsigned short Port, unsigned char *Buffer, unsigned long Count)
 {
-    for (unsigned long i = 0; i < Count; ++i)
-    {
-        unsigned char *pOut = (unsigned char *)(Buffer + i);
-        _asm {
-        mov dx, Port
-#ifdef _WIN64
-        mov rsi, pOut
-#else
-        mov esi, pOut
-#endif
-        outsb
-
-        }
-    }
+    __asm__ __volatile__("rep; outsb" : : [Port] "d"(Port), [Buffer] "S"(Buffer), "c"(Count));
 }

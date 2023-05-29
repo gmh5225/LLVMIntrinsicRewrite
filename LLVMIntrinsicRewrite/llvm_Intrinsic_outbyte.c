@@ -4,9 +4,5 @@
 void
 __outbyte(unsigned short Port, unsigned char Data)
 {
-    _asm {
-		mov dx, Port
-		mov al, Data
-		out dx, al
-    }
+    __asm__ __volatile__("outb %b[Data], %w[Port]" : : [Port] "Nd"(Port), [Data] "a"(Data));
 }

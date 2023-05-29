@@ -4,9 +4,5 @@
 void
 __outdword(unsigned short Port, unsigned long Data)
 {
-    _asm {
-		mov dx, Port
-		mov eax, Data
-		out dx, eax
-    }
+    __asm__ __volatile__("outl %k[Data], %w[Port]" : : [Port] "Nd"(Port), [Data] "a"(Data));
 }
