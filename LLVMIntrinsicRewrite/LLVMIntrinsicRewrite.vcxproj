@@ -41,10 +41,8 @@
     <ClCompile Include="llvm_Intrinsic_sgdt.c" />
     <ClCompile Include="llvm_Intrinsic_sidtlidt.c" />
     <ClCompile Include="llvm_Intrinsic_sticli.c" />
-    <ClCompile Include="llvm_Intrinsic_stosb.c" />
     <ClCompile Include="llvm_Intrinsic_stosd.c" />
     <ClCompile Include="llvm_Intrinsic_stosq.c" />
-    <ClCompile Include="llvm_Intrinsic_stosw.c" />
     <ClCompile Include="llvm_Intrinsic_vminstr.c" />
     <ClCompile Include="llvm_Intrinsic_wbinvd.c" />
     <ClCompile Include="llvm_Intrinsic_writecr0.c" />
@@ -69,14 +67,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>LLVM-MSVC_v142</PlatformToolset>
+    <PlatformToolset>LLVM-MSVC_v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>LLVM-MSVC_v142</PlatformToolset>
+    <PlatformToolset>LLVM-MSVC_v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -114,6 +112,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <AdditionalOptions>-fauto-generate-ir %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,6 +133,7 @@
       <BufferSecurityCheck>false</BufferSecurityCheck>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <AdditionalOptions>-fauto-generate-ir %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
