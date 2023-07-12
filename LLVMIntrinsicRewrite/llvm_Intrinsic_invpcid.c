@@ -15,7 +15,7 @@ __declspec(naked) void _invpcid(unsigned int type, void *descriptor)
 #else
     _asm {
 	    push eax
-		pusb ebx
+		push ebx
 		mov eax, dword ptr[esp + 0xc]
 		mov ebx, dword ptr[esp + 0x10]
 	    invpcid eax, [ebx]

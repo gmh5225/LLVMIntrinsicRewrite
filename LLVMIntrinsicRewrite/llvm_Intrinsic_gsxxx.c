@@ -16,11 +16,13 @@ __writegsdword(unsigned long Offset, unsigned long Data)
     __asm__ __volatile__("movl %k[Data], %%gs:%a[Offset]" : : [Offset] "ir"(Offset), [Data] "ir"(Data) : "memory");
 }
 
+#ifdef _WIN64
 void
 __writegsqword(unsigned long Offset, unsigned long long Data)
 {
     __asm__ __volatile__("movq %q[Data], %%gs:%a[Offset]" : : [Offset] "ir"(Offset), [Data] "ir"(Data) : "memory");
 }
+#endif
 
 void
 __incgsbyte(unsigned long Offset)
@@ -40,11 +42,13 @@ __incgsdword(unsigned long Offset)
     __asm__ __volatile__("incl %%gs:%a[Offset]" : : [Offset] "ir"(Offset) : "memory");
 }
 
+#ifdef _WIN64
 void
 __incgsqword(unsigned long Offset)
 {
     __asm__ __volatile__("incq %%gs:%a[Offset]" : : [Offset] "ir"(Offset) : "memory");
 }
+#endif
 
 void
 __addgsbyte(unsigned long Offset, unsigned char Data)
