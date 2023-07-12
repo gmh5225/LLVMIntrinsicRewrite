@@ -1,10 +1,15 @@
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/writecr3.md
-__declspec(naked) void __writecr3(unsigned __int64 Data)
+#ifdef _WIN64
+void
+__writecr3(unsigned long long Data)
 {
-    _asm
-    {
-		mov cr3, rcx
-		ret
-    }
+    __asm__("mov %[Data], %%cr3" : : [Data] "r"(Data) : "memory");
 }
+#else
+void
+__writecr3(unsigned int Data)
+{
+    __asm__("mov %[Data], %%cr3" : : [Data] "r"(Data) : "memory");
+}
+#endif

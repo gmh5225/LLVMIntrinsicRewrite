@@ -1,11 +1,20 @@
 #include <Windows.h>
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/readcr8.md
-__declspec(naked) ULONG_PTR __readcr8(void)
+#ifdef _WIN64
+unsigned long long
+__readcr8(void)
 {
-    _asm
-    {
-	    mov rax, cr8
-		ret
-    }
+    unsigned long long value;
+    __asm__ __volatile__("mov %%cr8, %[value]" : [value] "=r"(value));
+    return value;
 }
+#else
+unsigned long
+__readcr8(void)
+{
+    unsigned long value;
+    __asm__ __volatile__("mov %%cr8, %[value]" : [value] "=r"(value));
+    return value;
+}
+#endif

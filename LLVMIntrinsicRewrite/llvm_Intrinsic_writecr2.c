@@ -1,10 +1,15 @@
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/readcr2.md
-__declspec(naked) void __writecr2(unsigned __int64 Data)
+#ifdef _WIN64
+void
+__writecr2(unsigned long long Data)
 {
-    _asm
-    {
-		mov cr2, rcx
-        ret
-    }
+    __asm__("mov %[Data], %%cr2" : : [Data] "r"(Data) : "memory");
 }
+#else
+void
+__writecr2(unsigned int Data)
+{
+    __asm__("mov %[Data], %%cr2" : : [Data] "r"(Data) : "memory");
+}
+#endif

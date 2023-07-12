@@ -1,10 +1,15 @@
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/writecr4.md
-__declspec(naked) void __writecr4(unsigned __int64 Data)
+#ifdef _WIN64
+void
+__writecr4(unsigned long long Data)
 {
-    _asm
-    {
-		mov cr4, rcx
-        ret
-    }
+    __asm__("mov %[Data], %%cr4" : : [Data] "r"(Data) : "memory");
 }
+#else
+void
+__writecr4(unsigned int Data)
+{
+    __asm__("mov %[Data], %%cr4" : : [Data] "r"(Data) : "memory");
+}
+#endif

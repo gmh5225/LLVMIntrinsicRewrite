@@ -2,12 +2,9 @@
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/readcr8.md
 #ifdef _WIN64
-__declspec(naked) void __writecr8(unsigned __int64 Data)
+void
+__writecr8(unsigned long long Data)
 {
-    _asm
-    {
-	    mov cr8, rcx
-        ret
-    }
+    __asm__("mov %[Data], %%cr8" : : [Data] "r"(Data) : "memory");
 }
-#endif // _WIN64
+#endif
