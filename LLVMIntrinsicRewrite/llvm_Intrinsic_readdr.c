@@ -1,82 +1,72 @@
 #include <Windows.h>
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/readdr.md
-__declspec(naked) ULONG_PTR __readdr(unsigned int DebugRegister)
-{
 #ifdef _WIN64
-    _asm {
-		pushfq
-		cmp ecx, 0
-		je _dr0
-		cmp ecx, 1
-		je _dr1
-		cmp ecx, 2
-		je _dr2
-		cmp ecx, 3
-		je _dr3
-		cmp ecx, 6
-		je _dr6
-		cmp ecx, 7
-		je _dr7
-		jmp _end
-	_dr0:
-		mov rax, dr0
-		jmp _end
-	_dr1:
-		mov rax, dr1
-	    jmp _end
-	_dr2:
-		mov rax, dr2
-		jmp _end
-	_dr3:
-		mov rax, dr3
-		jmp _end
-	_dr6:
-		mov rax, dr6
-		jmp _end
-	_dr7:
-		mov rax, dr7
-	_end:
-		popfq
-		ret
+unsigned long long
+__readdr(unsigned int reg)
+{
+    unsigned long long value;
+    switch (reg)
+    {
+    case 0:
+        __asm__ __volatile__("movq %%dr0, %q[value]" : [value] "=r"(value));
+        break;
+    case 1:
+        __asm__ __volatile__("movq %%dr1, %q[value]" : [value] "=r"(value));
+        break;
+    case 2:
+        __asm__ __volatile__("movq %%dr2, %q[value]" : [value] "=r"(value));
+        break;
+    case 3:
+        __asm__ __volatile__("movq %%dr3, %q[value]" : [value] "=r"(value));
+        break;
+    case 4:
+        __asm__ __volatile__("movq %%dr4, %q[value]" : [value] "=r"(value));
+        break;
+    case 5:
+        __asm__ __volatile__("movq %%dr5, %q[value]" : [value] "=r"(value));
+        break;
+    case 6:
+        __asm__ __volatile__("movq %%dr6, %q[value]" : [value] "=r"(value));
+        break;
+    case 7:
+        __asm__ __volatile__("movq %%dr7, %q[value]" : [value] "=r"(value));
+        break;
     }
-#else
-    _asm {
-	    pushfd
-		cmp dword ptr[esp + 8], 0
-		je _dr0
-		cmp dword ptr[esp + 8], 1
-		je _dr1
-		cmp dword ptr[esp + 8], 2
-		je _dr2
-		cmp dword ptr[esp + 8], 3
-		je _dr3
-		cmp dword ptr[esp + 8], 6
-		je _dr6
-		cmp dword ptr[esp + 8], 7
-		je _dr7
-		jmp _end
-	_dr0:	
-		mov eax, dr0
-		jmp _end
-	_dr1:
-		mov eax, dr1
-		jmp _end
-	_dr2:
-		mov eax, dr2
-		jmp _end
-	_dr3:
-		mov eax, dr3
-		jmp _end
-	_dr6:
-		mov eax, dr6
-		jmp _end
-	_dr7:
-		mov eax, dr7
-		jmp _end
-	_end:
-		popfd
-		ret 0x4
-    }
-#endif // _WIN64
+    return value;
 }
+#else
+unsigned int
+__readdr(unsigned int reg)
+{
+    unsigned int value;
+    switch (reg)
+    {
+    case 0:
+        __asm__ __volatile__("mov %%dr0, %[value]" : [value] "=r"(value));
+        break;
+    case 1:
+        __asm__ __volatile__("mov %%dr1, %[value]" : [value] "=r"(value));
+        break;
+    case 2:
+        __asm__ __volatile__("mov %%dr2, %[value]" : [value] "=r"(value));
+        break;
+    case 3:
+        __asm__ __volatile__("mov %%dr3, %[value]" : [value] "=r"(value));
+        break;
+    case 4:
+        __asm__ __volatile__("mov %%dr4, %[value]" : [value] "=r"(value));
+        break;
+    case 5:
+        __asm__ __volatile__("mov %%dr5, %[value]" : [value] "=r"(value));
+        break;
+    case 6:
+        __asm__ __volatile__("mov %%dr6, %[value]" : [value] "=r"(value));
+        break;
+    case 7:
+        __asm__ __volatile__("mov %%dr7, %[value]" : [value] "=r"(value));
+        break;
+    }
+    return value;
+}
+#endif

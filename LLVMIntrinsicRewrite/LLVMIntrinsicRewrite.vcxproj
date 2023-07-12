@@ -29,7 +29,6 @@
     <ClCompile Include="llvm_Intrinsic_outword.c" />
     <ClCompile Include="llvm_Intrinsic_outwordstring.c" />
     <ClCompile Include="llvm_Intrinsic_rdtscp.c" />
-    <ClCompile Include="llvm_Intrinsic_readdr.c" />
     <ClCompile Include="llvm_Intrinsic_readmsr.c" />
     <ClCompile Include="llvm_Intrinsic_readpmc.c" />
     <ClCompile Include="llvm_Intrinsic_segment.c" />
