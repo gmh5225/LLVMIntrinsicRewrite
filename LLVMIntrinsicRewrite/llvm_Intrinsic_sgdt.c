@@ -1,3 +1,4 @@
+#ifdef _WIN64
 __declspec(naked) void _sgdt(void *Destination)
 {
     _asm
@@ -6,3 +7,4 @@ __declspec(naked) void _sgdt(void *Destination)
 		ret
     }
 }
+#endif

@@ -37,7 +37,6 @@
     <ClCompile Include="llvm_Intrinsic_sticli.c" />
     <ClCompile Include="llvm_Intrinsic_vminstr.c" />
     <ClCompile Include="llvm_Intrinsic_wbinvd.c" />
-    <ClCompile Include="llvm_Intrinsic_writedr.c" />
     <ClCompile Include="llvm_Intrinsic_writemsr.c" />
     <ClCompile Include="llvm_Intrinsic_xbegin.c" />
     <ClCompile Include="llvm_Intrinsic_xend.c" />

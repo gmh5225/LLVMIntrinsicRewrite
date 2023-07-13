@@ -1,4 +1,5 @@
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/sidt.md
+#ifdef _WIN64
 __declspec(naked) void __sidt(void *Destination)
 {
     _asm
@@ -17,3 +18,4 @@ __declspec(naked) void __lidt(void *Source)
         ret
     }
 }
+#endif

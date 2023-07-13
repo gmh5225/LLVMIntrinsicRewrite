@@ -1,90 +1,68 @@
 #include <Windows.h>
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/writedr.md
-__declspec(naked) void __writedr(unsigned int DebugRegister, ULONG_PTR DebugValue)
-{
 #ifdef _WIN64
-    _asm {
-		pushfq
-		cmp ecx, 0
-		je _dr0
-		cmp ecx, 1
-		je _dr1
-		cmp ecx, 2
-		je _dr2
-		cmp ecx, 3
-		je _dr3
-		cmp ecx, 6
-		je _dr6
-		cmp ecx, 7
-		je _dr7
-		jmp _end
-	_dr0:
-		mov dr0, rdx
-		jmp _end
-	_dr1:
-		mov dr1, rdx
-	    jmp _end
-	_dr2:
-		mov dr2, rdx
-		jmp _end
-	_dr3:
-		mov dr3, rdx
-		jmp _end
-	_dr6:
-		mov dr6, rdx
-		jmp _end
-	_dr7:
-		mov dr7, rdx
-	_end:
-		popfq
-		ret
+void
+__writedr(unsigned int reg, unsigned long long value)
+{
+    switch (reg)
+    {
+    case 0:
+        __asm__("movq %q[value], %%dr0" : : [value] "r"(value) : "memory");
+        break;
+    case 1:
+        __asm__("movq %q[value], %%dr1" : : [value] "r"(value) : "memory");
+        break;
+    case 2:
+        __asm__("movq %q[value], %%dr2" : : [value] "r"(value) : "memory");
+        break;
+    case 3:
+        __asm__("movq %q[value], %%dr3" : : [value] "r"(value) : "memory");
+        break;
+    case 4:
+        __asm__("movq %q[value], %%dr4" : : [value] "r"(value) : "memory");
+        break;
+    case 5:
+        __asm__("movq %q[value], %%dr5" : : [value] "r"(value) : "memory");
+        break;
+    case 6:
+        __asm__("movq %q[value], %%dr6" : : [value] "r"(value) : "memory");
+        break;
+    case 7:
+        __asm__("movq %q[value], %%dr7" : : [value] "r"(value) : "memory");
+        break;
     }
-#else
-    _asm {
-	    pushfd
-		push eax
-		cmp dword ptr[esp + 4 + 8], 0
-		je _dr0
-		cmp dword ptr[esp + 4 + 8], 1
-		je _dr1
-		cmp dword ptr[esp + 4 + 8], 2
-		je _dr2
-		cmp dword ptr[esp + 4 + 8], 3
-		je _dr3
-		cmp dword ptr[esp + 4 + 8], 6
-		je _dr6
-		cmp dword ptr[esp + 4 + 8], 7
-		je _dr7
-		jmp _end
-	_dr0:	
-		mov eax, dword ptr[esp + 8 + 8]
-		mov dr0, eax
-		jmp _end
-	_dr1:
-		mov eax, dword ptr[esp + 8 + 8]
-		mov dr1, eax
-		jmp _end
-	_dr2:
-		mov eax, dword ptr[esp + 8 + 8]
-		mov dr2, eax
-		jmp _end
-	_dr3:
-		mov eax, dword ptr[esp + 8 + 8]
-		mov dr3, eax
-		jmp _end
-	_dr6:
-		mov eax, dword ptr[esp + 8 + 8]
-		mov dr6, eax
-		jmp _end
-	_dr7:
-		mov eax, dword ptr[esp + 8 + 8]
-		mov dr7, eax
-		jmp _end
-	_end:
-		pop eax
-		popfd
-		ret 0x8
-    }
-#endif // _WIN64
 }
+#else
+void
+__writedr(unsigned int reg, unsigned int value)
+{
+    switch (reg)
+    {
+    case 0:
+        __asm__("mov %[value], %%dr0" : : [value] "r"(value) : "memory");
+        break;
+    case 1:
+        __asm__("mov %[value], %%dr1" : : [value] "r"(value) : "memory");
+        break;
+    case 2:
+        __asm__("mov %[value], %%dr2" : : [value] "r"(value) : "memory");
+        break;
+    case 3:
+        __asm__("mov %[value], %%dr3" : : [value] "r"(value) : "memory");
+        break;
+    case 4:
+        __asm__("mov %[value], %%dr4" : : [value] "r"(value) : "memory");
+        break;
+    case 5:
+        __asm__("mov %[value], %%dr5" : : [value] "r"(value) : "memory");
+        break;
+    case 6:
+        __asm__("mov %[value], %%dr6" : : [value] "r"(value) : "memory");
+        break;
+    case 7:
+        __asm__("mov %[value], %%dr7" : : [value] "r"(value) : "memory");
+        break;
+    }
+}
+#endif // _WIN64
