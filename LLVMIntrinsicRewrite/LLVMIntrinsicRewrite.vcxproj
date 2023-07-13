@@ -28,17 +28,10 @@
     <ClCompile Include="llvm_Intrinsic_outdwordstring.c" />
     <ClCompile Include="llvm_Intrinsic_outword.c" />
     <ClCompile Include="llvm_Intrinsic_outwordstring.c" />
-    <ClCompile Include="llvm_Intrinsic_rdtscp.c" />
-    <ClCompile Include="llvm_Intrinsic_readpmc.c" />
     <ClCompile Include="llvm_Intrinsic_segment.c" />
     <ClCompile Include="llvm_Intrinsic_sgdt.c" />
     <ClCompile Include="llvm_Intrinsic_sidtlidt.c" />
-    <ClCompile Include="llvm_Intrinsic_sticli.c" />
     <ClCompile Include="llvm_Intrinsic_vminstr.c" />
-    <ClCompile Include="llvm_Intrinsic_wbinvd.c" />
-    <ClCompile Include="llvm_Intrinsic_writemsr.c" />
-    <ClCompile Include="llvm_Intrinsic_xbegin.c" />
-    <ClCompile Include="llvm_Intrinsic_xend.c" />
     <ClCompile Include="llvm_threadsafe_statics.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

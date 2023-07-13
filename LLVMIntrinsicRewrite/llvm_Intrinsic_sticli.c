@@ -1,19 +1,11 @@
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/disable.md
-__declspec(naked) void _disable(void)
+void __cdecl _disable(void)
 {
-    _asm
-    {
-	    cli
-        ret
-    }
+    __asm__("cli" : : : "memory");
 }
 
 // https://github.com/MicrosoftDocs/cpp-docs/blob/main/docs/intrinsics/enable.md
-__declspec(naked) void _enable(void)
+void __cdecl _enable(void)
 {
-    _asm
-    {
-	    sti
-        ret
-    }
+    __asm__("sti" : : : "memory");
 }
