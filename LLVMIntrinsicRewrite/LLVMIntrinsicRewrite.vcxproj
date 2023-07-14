@@ -11,20 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="llvm_fpu_support.c" />
     <ClCompile Include="llvm_Intrinsic_gsxxx.c" />
-    <ClCompile Include="llvm_Intrinsic_inbytestring.c" />
-    <ClCompile Include="llvm_Intrinsic_indwordstring.c" />
-    <ClCompile Include="llvm_Intrinsic_inwordstring.c" />
-    <ClCompile Include="llvm_Intrinsic_KeQuerySystemTime.c" />
-    <ClCompile Include="llvm_Intrinsic_outbyte.c" />
     <ClCompile Include="llvm_Intrinsic_outbytestring.c" />
-    <ClCompile Include="llvm_Intrinsic_outdword.c" />
     <ClCompile Include="llvm_Intrinsic_outdwordstring.c" />
-    <ClCompile Include="llvm_Intrinsic_outword.c" />
     <ClCompile Include="llvm_Intrinsic_outwordstring.c" />
     <ClCompile Include="llvm_Intrinsic_vminstr.c" />
-    <ClCompile Include="llvm_threadsafe_statics.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
