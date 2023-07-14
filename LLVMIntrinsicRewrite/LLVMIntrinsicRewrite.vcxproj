@@ -28,7 +28,6 @@
     <ClCompile Include="llvm_Intrinsic_outword.c" />
     <ClCompile Include="llvm_Intrinsic_outwordstring.c" />
     <ClCompile Include="llvm_Intrinsic_sgdt.c" />
-    <ClCompile Include="llvm_Intrinsic_sidtlidt.c" />
     <ClCompile Include="llvm_Intrinsic_vminstr.c" />
     <ClCompile Include="llvm_threadsafe_statics.c" />
   </ItemGroup>
