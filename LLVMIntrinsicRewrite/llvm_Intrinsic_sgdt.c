@@ -7,4 +7,13 @@ __declspec(naked) void _sgdt(void *Destination)
 		ret
     }
 }
+
+__declspec(naked) void _lgdt(void *Source)
+{
+    _asm
+    {
+		lgdt    fword ptr [rcx]
+		ret
+    }
+}
 #endif
