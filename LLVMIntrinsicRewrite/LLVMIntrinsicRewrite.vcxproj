@@ -12,9 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="llvm_Intrinsic_gsxxx.c" />
-    <ClCompile Include="llvm_Intrinsic_outbytestring.c" />
-    <ClCompile Include="llvm_Intrinsic_outdwordstring.c" />
-    <ClCompile Include="llvm_Intrinsic_outwordstring.c" />
     <ClCompile Include="llvm_Intrinsic_vminstr.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
