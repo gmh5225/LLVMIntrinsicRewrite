@@ -20,7 +20,7 @@ __writegsdword(unsigned long Offset, unsigned long Data)
 void
 __writegsqword(unsigned long Offset, unsigned long long Data)
 {
-    __asm__ __volatile__("movq %q[Data], %%gs:%a[Offset]" : : [Offset] "ir"(Offset), [Data] "ir"(Data) : "memory");
+    __asm__ __volatile__("movq %q[Data], %%gs:%a[Offset]" : : [Offset] "ir"(Offset), [Data] "r"(Data) : "memory");
 }
 #endif
 
